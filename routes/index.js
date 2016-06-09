@@ -24,6 +24,7 @@ router.get('/', function(req, res, next) {
           res.status = err.code;
           next();
         } else {
+          console.log('art'+articleList);;
           res.render('index',
           {
             member : req.session.member || null,

@@ -5,13 +5,23 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+//var exphbs = require('express-handlebars');
+var passport = require('passport');
+//var localst = require('passport-local');
 
 var routes = require('./routes/index');
 var register = require('./routes/register');
 var login = require('./routes/login');
 var users = require('./routes/users');
-var article = require('./routes/article')
-
+var article = require('./routes/article');
+var status = require('./routes/status');
+var statusup = require('./routes/statusupdate');
+var show = require('./routes/statusshow');
+var join = require('./routes/join');
+var schedule_show = require('./routes/schedule_show');
+var newcase =require('./routes/newcase');
+var showcase =require('./routes/caseshow');
+var match =require('./routes/match');
 
 var app = express();
 
@@ -27,12 +37,24 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 app.use('/', routes);
 app.use('/users', users);
 app.use('/article', article);
 app.use('/login', login);
 app.use('/register', register);
+app.use('/status', status);
+app.use('/statusupdate', statusup);
+app.use('/statusshow', show);
+app.use('/join', join);
+app.use('/schedule_show', schedule_show);
+app.use('/newcase', newcase);
+app.use('/caseshow', showcase);
+app.use('/match', match);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

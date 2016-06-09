@@ -29,21 +29,40 @@ router.get('/members/:memberId', function(req, res) {
 router.post('/', function(req, res, next) {
 
   //首先必須先產生出一個Member的物件在進行save
+
   var newMember = new Member({
     name : req.body.name,
     account : req.body.account,
     password : req.body.password
   });
-  newMember.save(function(err) {
+
+  var input = req.body.account;
+
+
+  newMember.save(function(err,member1,result) {
     if(err) {
       next(err);
     } else {
       //再重新導向之前，我們要讓使用者登入，因此我們需要使用到session
+      if(member1 == null)
+      {
+          req.session.member = null;
+        res.redirect('/register');
+      }
+
+      else{
       req.session.member = newMember;
-      res.redirect('/');
-      
+      req.session.member.id = result;
+        /*console.log(req.session.member);
+      res.redirect('/status');*/
+      res.render('status', {
+        member : req.session.member,
+        memberid:req.session.member.id
+      });
     }
-  });
+    }
+    });
+
 });
 
 /* Log  Out*/

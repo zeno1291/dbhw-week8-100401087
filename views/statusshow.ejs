@@ -1,0 +1,37 @@
+<% include ./header %>
+
+<header class="intro-header" style="background-image: url('/images/post-bg.jpg')">
+       <div class="container">
+           <div class="row">
+               <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                   <div class="post-heading">
+                       <h1><%= status.Email %></h1>
+
+                   </div>
+               </div>
+           </div>
+       </div>
+   </header>
+
+   <!-- Post Content -->
+
+       <div class="container">
+
+           <div class="row">
+               <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                  <li>
+                    here<%= status.Name %>
+                  </li>
+               </div>
+           </div>
+
+       </div>
+
+       <form action ="/statusshow/show" method="POST">
+         <input type ="radio" name ="gen" value ="male"> male</br>
+         <input type = "submit">
+       </form>
+
+   <hr>
+<% include ./footer %>

@@ -23,7 +23,6 @@ router.get('/members/:memberId', function(req, res) {
       res.json(err);
     } else {
       res.json(member);
-
     }
   })
 
@@ -32,25 +31,28 @@ router.get('/members/:memberId', function(req, res) {
 
 router.post('/', function(req, res, next) {
 
-
-
   var newMember = new Member({
     account : req.body.account,
     password : req.body.password
   });
 
-
-  newMember.check(function(err) {
+  newMember.check(function(err,member2) {
     if(err) {
       next(err);
     } else {
       //再重新導向之前，我們要讓使用者登入，因此我們需要使用到session
       if(newMember.name!='')
       {
-        //console.log('ist'+newMember.name+'w');
-      req.session.member = newMember;
-      //console.log('sess'+newMember.name);
-      //console.log(newMember.op);
+
+      req.session.member = member2;
+
+      if(member2.account ==1) //admin
+      {
+      global.member = member2;
+      console.log('m'+member2.account);
+      console.log('g'+global.member.account);
+      }
+
       res.redirect('/');
     }
 

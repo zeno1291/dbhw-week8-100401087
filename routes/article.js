@@ -35,7 +35,7 @@ router.get('/:articleId', function(req, res, next) {
 
     }
   });
-});
+}); // get id to show page
 
 
 
@@ -44,6 +44,7 @@ router.post('/', function(req, res) {
   if(!req.session.member) {
     res.redirect('/');
   }
+
 
   var newArticle = new Article({
     title : req.body.title,
@@ -56,7 +57,7 @@ router.post('/', function(req, res) {
       res.status = err.code;
       res.json(err);
     } else {
-      
+
       res.redirect("/");
     }
   });
