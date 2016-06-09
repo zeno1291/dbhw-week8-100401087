@@ -5,7 +5,7 @@
            <div class="row">
                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                    <div class="post-heading">
-                       <h1>abb</h1>
+                       <h1>All people</h1>
 
                    </div>
                </div>
@@ -18,45 +18,46 @@
        <div class="container">
            <div class="row">
                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <%if(global.member){%>
                  <%if(schedulelist){%>
                    <%schedulelist.forEach(function(schedule){%>
                    <div class="post-preview">
 
                      <li>
-                       here<%= schedule.Mon_9_12 %>
+                       Mon9~12:<%= schedule.Mon_9_12 %>
                      </li>
                      <li>
-                       here<%= schedule.Mon_13_17 %>
+                       Mon13~17:<%= schedule.Mon_13_17 %>
                      </li>
                      <li>
-                       here<%= schedule.Tue_9_12 %>
+                       Tue9~12:<%= schedule.Tue_9_12 %>
                      </li>
                      <li>
-                       here<%= schedule.Tue_13_17 %>
+                       Tue13~17:<%= schedule.Tue_13_17 %>
                      </li>
                      <li>
-                       here<%= schedule.Wed_9_12 %>
+                       Wed9~12:<%= schedule.Wed_9_12 %>
                      </li>
                      <li>
-                       here<%= schedule.Wed_13_17 %>
+                       Wed13~17:<%= schedule.Wed_13_17 %>
                      </li>
                      <li>
-                       here<%= schedule.Thu_9_12 %>
+                       Thu9~12:<%= schedule.Thu_9_12 %>
                      </li>
                      <li>
-                       here<%= schedule.Thu_13_17 %>
+                       Thu13~17:<%= schedule.Thu_13_17 %>
                      </li>
                      <li>
-                       here<%= schedule.Fri_9_12 %>
+                       Fri9~12:<%= schedule.Fri_9_12 %>
                      </li>
                      <li>
-                       here<%= schedule.Fri_13_17 %>
+                       Fri13~17:<%= schedule.Fri_13_17 %>
                      </li>
 
                    </div>
                    <hr>
              <%  }); %>
-               <%}%>
+               <%}}%>
                </div>
            </div>
        </div>

@@ -23,30 +23,25 @@
                      <h2 class="post-title">
                        NO People
                      </h2>
-
                   <% } else {%>
                   <%for(;rowlist.length!=0;){%>
                    <div class="post-preview">
-
                       <% var sth =rowlist.pop()%>
-
                            <h2 class="post-title">
-                             <%= sth[0].SID %>
+                             SID:<%= sth[0].SID %>
                            </h2>
                            <h4>
-                             <%= sth[0].Name %>
+                             Name:<%= sth[0].Name %>
                            </h4>
                            <h4>
-                             <%= sth[0].Department %>
+                             Department:<%= sth[0].Department %>
                            </h4>
                            <h4>
-                             <%= sth[0].Phone %>
+                             Phone:<%= sth[0].Phone %>
                            </h4>
                            <h4>
-                             <%= sth[0].Email %>
+                             Email:<%= sth[0].Email %>
                            </h4>
-
-
                        </a>
                        <div class="post-preview">
                          <h4>
@@ -80,7 +75,6 @@
                            <%= sth[0].Fri_13_17 %>
                          </h4>
                          </div>
-
                    </div>
                    <hr>
                   <%}%>

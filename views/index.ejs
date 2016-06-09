@@ -1,4 +1,4 @@
-   <% include ./header %>
+<% include ./header %>
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
     <header class="intro-header" style="background-image: url('./images/home-bg.jpg')">
@@ -6,9 +6,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>Clean Blog</h1>
+                        <h1>Welcome</h1>
                         <hr class="small">
-                        <span class="subheading">A Clean Blog Theme by Start Bootstrap</span>
+                        <span class="subheading">Welcome to my blog</span>
                     </div>
                 </div>
             </div>
@@ -20,20 +20,30 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-                <% articleList.forEach(function(article) { %>
-                      <div class="post-preview">
-                          <a href="/article/<%= article.id %>">
-                              <h2 class="post-title">
-                                <%= article.title %>
-                              </h2>
-                              <h3 class="post-subtitle">
-                                <%= article.content %>
-                              </h3>
-                          </a>
-                          <p class="post-meta">Posted by <a href="#"><%= article.member.name %></a> on
-                            <%= article.createdAt %>
-                          </p>
-                      </div>
+                <% caseist.forEach(function(Case) { %>
+
+                        <div class="post-preview">
+                            <a href="/caseshow/<%= Case.CID %>">
+                                <h2 class="post-title">
+                                  Name:<%= Case.CName %>
+                                </h2>
+                                </a>
+                                <h3 class="post-subtitle">
+                                  Date:<%= Case.Date_1 %>
+                                </h3>
+                                <h3 class="post-subtitle">
+                                  Time:<%= Case.Time %>
+                                </h3>
+                                <h3 class="post-subtitle">
+                                  Week:<%= Case.Week %>
+                                </h3>
+                                <h3 class="post-subtitle">
+                                  Description:<%= Case.Description %>
+                                </h3>
+
+
+                        </div>
+
                       <hr>
                 <%  }); %>
 

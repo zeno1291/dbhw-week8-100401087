@@ -20,42 +20,46 @@
            <div class="row">
                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-                  <li>
-                    here<%= schedule.Mon_13_17 %>
-                  </li>
-                  <li>
-                    here<%= schedule.Tue_9_12 %>
-                  </li>
-                  <li>
-                    here<%= schedule.Tue_13_17 %>
-                  </li>
-                  <li>
-                    here<%= schedule.Wed_9_12 %>
-                  </li>
-                  <li>
-                    here<%= schedule.Wed_13_17 %>
-                  </li>
-                  <li>
-                    here<%= schedule.Thu_9_12 %>
-                  </li>
-                  <li>
-                    here<%= schedule.Thu_13_17 %>
-                  </li>
-                  <li>
-                    here<%= schedule.Fri_9_12 %>
-                  </li>
-                  <li>
-                    here<%= schedule.Fri_13_17 %>
-                  </li>
+                 <li>
+                   Mon9~12:<%= schedule.Mon_9_12 %>
+                 </li>
+                 <li>
+                   Mon13~17:<%= schedule.Mon_13_17 %>
+                 </li>
+                 <li>
+                   Tue9~12:<%=schedule.Tue_9_12 %>
+                 </li>
+                 <li>
+                   Tue13~17:<%=schedule.Tue_13_17 %>
+                 </li>
+                 <li>
+                   Wed9~12:<%= schedule.Wed_9_12 %>
+                 </li>
+                 <li>
+                   Wed13~17:<%= schedule.Wed_13_17 %>
+                 </li>
+                 <li>
+                   Thu9~12:<%= schedule.Thu_9_12 %>
+                 </li>
+                 <li>
+                   Thu13~17:<%= schedule.Thu_13_17 %>
+                 </li>
+                 <li>
+                   Fri9~12:<%= schedule.Fri_9_12 %>
+                 </li>
+                 <li>
+                   Fri13~17:<%= schedule.Fri_13_17 %>
+                 </li>
+
                </div>
            </div>
 
        </div>
-
+       <%if(global.member){%>
        <form action ="/schedule_show/show" method="POST">
-         <input type ="radio" name ="gen" value ="male"> male</br>
-         <input type = "submit">
-       </form>
+        <button type="submit" class="btn btn-default">Show All Schedule</button>
 
+       </form>
+       <%}%>
    <hr>
 <% include ./footer %>

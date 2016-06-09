@@ -21,17 +21,37 @@
                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
                   <li>
-                    here<%= status.Name %>
+                    SID:<%= status.SID %>
+                  </li>
+                  <li>
+                    Name:<%= status.Name %>
+                  </li>
+                  <li>
+                    Department:<%= status.Department %>
+                  </li>
+                  <li>
+                    Grade:<%= status.Grade %>
+                  </li>
+                  <li>
+                    Sex:<%= status.Sex %>
+                  </li>
+                  <li>
+                    Phone:<%= status.Phone %>
+                  </li>
+                  <li>
+                    Email:<%= status.Email %>
                   </li>
                </div>
            </div>
 
        </div>
+       <%if(global.member){%>
+
 
        <form action ="/statusshow/show" method="POST">
-         <input type ="radio" name ="gen" value ="male"> male</br>
-         <input type = "submit">
-       </form>
 
+          <button type="submit" class="btn btn-default">Show All Status</button>
+       </form>
+       <%}%>
    <hr>
 <% include ./footer %>

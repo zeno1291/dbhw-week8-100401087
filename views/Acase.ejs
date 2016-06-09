@@ -1,0 +1,41 @@
+<% include ./header %>
+
+<header class="intro-header" style="background-image: url('/images/post-bg.jpg')">
+       <div class="container">
+           <div class="row">
+               <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                   <div class="post-heading">
+
+                       <%# <h2 class="subheading">Problems look mighty small from 150 miles up</h2>%>
+
+                   </div>
+               </div>
+           </div>
+       </div>
+   </header>
+
+   <!-- Post Content -->
+   <article>
+       <div class="container">
+           <div class="row">
+               <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                 <h1>Name:<%= cased.CName %></h1>
+                  <p>
+                    Date:<%= cased.Date_1 %>
+                  </p>
+                  <p>
+                    Time:<%= cased.Time %>
+                  </p>
+                  <p>
+                    Week:<%= cased.Week %>
+                  </p>
+                  <p>
+                    Description:<%= cased.Description %>
+                  </p>
+               </div>
+           </div>
+       </div>
+   </article>
+
+   <hr>
+<% include ./footer %>

@@ -18,25 +18,30 @@
        <div class="container">
            <div class="row">
                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                 <%if(global.member){%>
                  <%if(statuslist){%>
                    <%statuslist.forEach(function(status){%>
                    <div class="post-preview">
 
-                           <h2 class="post-title">
-                             <%= status.SID %>
-                           </h2>
-                           <h4>
-                             <%= status.Email %>
-                           </h4>
-                           <h4>
-                             <%= status.Department %>
-                           </h4>
-                       </a>
-
+                     <h2 class="post-title">
+                         SID:<%= status.SID %>
+                     </h2>
+                     <h4>
+                       Name:<%= status.Name %>
+                     </h4>
+                     <h4>
+                       Department:<%= status.Department %>
+                     </h4>
+                     <h4>
+                       Phone:<%= status.Phone %>
+                     </h4>
+                     <h4>
+                      Email: <%= status.Email %>
+                     </h4>
                    </div>
                    <hr>
              <%  }); %>
-               <%}%>
+               <%}}%>
                </div>
            </div>
        </div>

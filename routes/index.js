@@ -1,21 +1,22 @@
 var express = require('express');
 var router = express.Router();
 var Member = require('../models/Member');
-var Article = require('../models/Article');
+//var acase = require('../models/acase');
+var Case = require('../models/Case');
 var async = require('async');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  Article.getAll(function(err, articleList) {
+  Case.getAll(function(err, caseist) {
     if(err) {
       next();
     } else {
-      //這邊的做法是使用async each這樣的方式幫我們從articleList中一筆筆去找到member，然後新增一個key叫member在article物件中
-      async.each(articleList, function(article, cb) {
-        Member.get(article.memberId, function(err, member) {
+      //這邊的做法是使用async each這樣的方式幫我們從caseist中一筆筆去找到member，然後新增一個key叫member在acase物件中
+      async.each(caseist, function(acase, cb) {
+        Member.get(acase.CID, function(err) {
           if(err) {
             cb(err);
           } else {
-            article.member = member;
+
             cb(null);
           }
         });
@@ -24,18 +25,59 @@ router.get('/', function(req, res, next) {
           res.status = err.code;
           next();
         } else {
-          console.log('art'+articleList);;
+          console.log('art'+caseist);;
           res.render('index',
           {
             member : req.session.member || null,
-            articleList: articleList
+            caseist : caseist,
+            target :null
           });
         }
       });
 
     }
   });
+
+  /*res.render('index',
+  {
+    member : req.session.member || null,
+    result : null,
+    target :null
+
+  });*/
 });
 
+router.post('/', function(req, res, next) {
 
+    var words = req.body.search;
+
+    Case.search(words, function(err,result){
+      console.log('words');
+      console.log(result);
+      if(err)
+      {
+        next(err);
+      }
+      else{
+        var target;
+          if(result==null)
+          {
+            target = 0;
+          }
+          else{
+            target = 1;
+          }
+        res.render('asearch',{
+          member : req.session.member ||null,
+          result:result,
+          target : target
+        });
+
+
+      }
+
+
+    });
+
+});
 module.exports = router;

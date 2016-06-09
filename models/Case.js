@@ -16,7 +16,7 @@ var Case = function(options){
 
 };
 
-var Schedule = function(options) {
+/*var Schedule = function(options) {
   this.SID = options.SID;
   this.Mon_9_12 = options.Mon_9_12;
   this.Mon_13_17 = options.Mon_13_17;
@@ -30,20 +30,23 @@ var Schedule = function(options) {
   this.Fri_13_17 = options.Fri_13_17;
   this.ID1 = options.ID1; //account
 
-};
+};*/
 
 Case.get = function(transferCID,cb){
-
+  console.log('id');
+  console.log(transferCID);
   db().select()
   .from('Case')
   .where({
-    CID : transferCID
+    CID :transferCID
   })
   .map(function(row){
+
     return new Case(row); //new
   })
   .then(function(Caseresult){
     if(Caseresult.length){
+
       cb(null,Caseresult[0]);
     }
     else{
@@ -73,33 +76,33 @@ Case.getAll = function(cb){
 
 };
 
-/*Case.search =function(mon,cb){
+Case.search =function(searchwords,cb){
 
-  console('do');
-  mon.forEachAsync(function(next,index,concate,items,t){
-  var  c =0;
-  concate ='';
-  items = ['Mon_9_12','Mon_13_17','Tue_9_12','Tue_13_17',
-              'Wed_9_12','Wed_13_17','Thu_9_12','Thu_13_17','Fri_9_12','Fri_13_17'];
-    console.log('ele'+index);
+  db().select()
+  .from('Case')
+  .where(function(){this.where('CName','like','%'+searchwords+'%')
+  .orWhere('Date_1','like','%'+searchwords+'%').orWhere('Time','like','%'+searchwords+'%')
+  .orWhere('Week','like','%'+searchwords+'%')
+  .orWhere('Description','like','%'+searchwords+'%')})
+  .map(function(row){
+    return new Case(row); //new
+  })
+  .then(function(Caseresult){
+    if(Caseresult.length){
 
-    //console.log('items'+items[i]);
-    if(mon[index] == 0) // return i var + =item [i]
-    {
-      concate += items[index]+',';
-      c =c+1;
-      console.log('0');
+      cb(null,Caseresult);
     }
+    else{
+      cb(null, null);
+    }
+  })
+  .catch(function(err) {
+    console.log(err);
+    cb(new GeneralErrors.Database());
+  });
 
-    console.log('con'+concate);
-    console.log('c'+c);
-    return concate;
-  }).then(function(concate){
-  console.log('c'+concate);
-  cb(null,concate);
-  }.bind(this))
 
-};*/
+};
 
 Case.match = function(type, cb) {
 

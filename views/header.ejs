@@ -43,6 +43,14 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">Sample Blog</a>
+              <form name="sentMessage" action="/" method="POST" id="contactForm" novalidate>
+
+
+                <input type="text" class="form-control" placeholder="search case" id="search" name="search" required data-validation-required-message="Please enter your name.">
+                <p class="help-block text-danger"></p>
+                        <button type="submit" class="btn btn-default">Send</button>
+
+                </form>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -56,9 +64,7 @@
                   <li>
                       <a href="/">Welcome, <%= member.name %></a>
                   </li>
-                  <li>
-                      <a href="/article/new">Post new article</a>
-                  </li>
+
                   <li>
                       <a href="/statusupdate">Update Status</a>
                   </li>
@@ -66,21 +72,21 @@
                       <a href="/statusshow">Status Show</a>
                   </li>
                   <li>
-                      <a href="/join">JOIn</a>
+                      <a href="/join">JoIn</a>
                   </li>
                   <li>
                       <a href="/schedule_show">Schedule</a>
                   </li>
+                  <%if(global.member){%>
                   <li>
                       <a href="/newcase">Newcase</a>
                   </li>
-                  <li>
-                      <a href="/caseshow">Show Case</a>
-                  </li>
+
                   <li>
                       <a href="/match">Match</a>
                   </li>
                   <li>
+                    <%}%>
                       <form action="/register/logout" method="post">
                         <style media="screen">
                           #logout {

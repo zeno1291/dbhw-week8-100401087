@@ -30,7 +30,7 @@ Status.get(req.session.member.id,function(err,status){
 });
 
 router.post('/:show',function(req,res){
-  if(!req.session.member) {
+  if(!global.member) {
 
     res.redirect('/');
 
@@ -46,12 +46,6 @@ router.post('/:show',function(req,res){
         }
 
         else{
-          console.log('list:'+statuslist);
-          console.log('list:');
-          console.log(statuslist);
-          console.log('listttttt:');
-          console.log('list:'+statuslist[0]);
-          console.log('listID:'+statuslist[0].SID);
 
           res.render('allstatus',{
 
