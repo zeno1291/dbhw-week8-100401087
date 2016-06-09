@@ -6,6 +6,7 @@ var Schedule = require('../models/MemberClass');
 var async = require('async');
 
 router.get('/', function(req, res) {
+
   if(!req.session.member) {
     res.redirect('/');
   }
@@ -60,11 +61,12 @@ router.post('/', function(req, res) {
       res.json(err);
     } else {
       newSchedule.record(function(err) {
-        
+
         if(err) {
           res.status = err.code;
           res.json(err);
         } else {
+          global.nexist =null;
           res.redirect("/");
         }
       });

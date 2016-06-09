@@ -35,6 +35,16 @@
                </div>
            </div>
        </div>
+       <%if(global.member){%>
+           <form name="sentMessage" action="/caseshow" method="POST" id="contactForm" novalidate>
+         <div class="row">
+             <div class="form-group col-xs-12">
+
+                 <button type="submit" class="btn btn-default" name="d" value ="<%= cased.CID%>" >Delete</button>
+             </div>
+               </form>
+            <%}%>
+
    </article>
 
    <hr>

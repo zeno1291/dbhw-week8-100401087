@@ -61,6 +61,8 @@
                 </li>
 
                 <% if(member) {%>
+                  <% if(nexist){%>
+                    <%}else{%>
                   <li>
                       <a href="/">Welcome, <%= member.name %></a>
                   </li>
@@ -72,7 +74,7 @@
                       <a href="/statusshow">Status Show</a>
                   </li>
                   <li>
-                      <a href="/join">JoIn</a>
+                      <a href="/AStatus">Account</a>
                   </li>
                   <li>
                       <a href="/schedule_show">Schedule</a>
@@ -109,7 +111,7 @@
                       </form>
                       <%# css 大家在自己調整%>
                   </li>
-                <% } else {%>
+                <% }} else {%>
                   <li>
                       <a href="/register">Register</a>
                       <a href="/login">Login</a>

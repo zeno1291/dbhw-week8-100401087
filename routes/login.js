@@ -45,12 +45,11 @@ router.post('/', function(req, res, next) {
       {
 
       req.session.member = member2;
-
+      global.nexist = null;
       if(member2.account ==1) //admin
       {
       global.member = member2;
-      console.log('m'+member2.account);
-      console.log('g'+global.member.account);
+
       }
 
       res.redirect('/');
@@ -60,7 +59,9 @@ router.post('/', function(req, res, next) {
           req.session.member = null;
           res.locals.used =used; //locals -> ejs
             res.render('login', {
-              member : null
+              member : null,
+
+
             });
 
       }

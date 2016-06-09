@@ -16,25 +16,8 @@ var Case = function(options){
 
 };
 
-/*var Schedule = function(options) {
-  this.SID = options.SID;
-  this.Mon_9_12 = options.Mon_9_12;
-  this.Mon_13_17 = options.Mon_13_17;
-  this.Tue_9_12 = options.Tue_9_12;
-  this.Tue_13_17 = options.Tue_13_17;
-  this.Wed_9_12 = options.Wed_9_12;
-  this.Wed_13_17 = options.Wed_13_17;
-  this.Thu_9_12 = options.Thu_9_12;
-  this.Thu_13_17 = options.Thu_13_17;
-  this.Fri_9_12 = options.Fri_9_12;
-  this.Fri_13_17 = options.Fri_13_17;
-  this.ID1 = options.ID1; //account
-
-};*/
-
 Case.get = function(transferCID,cb){
-  console.log('id');
-  console.log(transferCID);
+
   db().select()
   .from('Case')
   .where({
@@ -179,8 +162,28 @@ Case.match2 = function(list,cb)
 
 );
 
+}
 
+Case.dele = function(did,fn){
 
+  if(!global.member)
+  {
+    res.rediect('/');
+  }
+
+  else{
+
+  db('Case')
+  .where('CID',did)
+  .del()
+  .then(function(){
+    fn(null);
+  }).catch(function(err) {
+    console.log(err);
+    cb(new GeneralErrors.Database());
+  });
+
+  }
 
 }
 

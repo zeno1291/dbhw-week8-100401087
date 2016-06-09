@@ -22,7 +22,7 @@ Status.find1(req.session.member.id,function(err,status){
       console.log(err);
       next();
     } else {
-      res.render('join', {
+      res.render('AStatus', {
         member : req.session.member || null,
         status : status
       });

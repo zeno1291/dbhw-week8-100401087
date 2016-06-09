@@ -12,8 +12,7 @@ router.get('/', function(req, res, next) {
 
 //members test
 router.get('/members/:memberId', function(req, res) {
-  console.log('d');
-  console.log(req.params.memberId);
+
   Member.get(req.params.memberId, function(err, member) {
     if(err) {
       res.status(err.code);
@@ -53,11 +52,12 @@ router.post('/', function(req, res, next) {
       else{
       req.session.member = newMember;
       req.session.member.id = result;
-        /*console.log(req.session.member);
-      res.redirect('/status');*/
+      var nexist =1;
       res.render('status', {
         member : req.session.member,
-        memberid:req.session.member.id
+        memberid:req.session.member.id,
+        nexist:nexist
+
       });
     }
     }

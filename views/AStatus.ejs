@@ -5,7 +5,7 @@
            <div class="row">
                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                    <div class="post-heading">
-                       <h1><%= status.Email %></h1>
+                       <h1><%= status.Name %></h1>
 
                    </div>
                </div>
@@ -19,10 +19,13 @@
            <div class="row">
                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                   <li>
-                    here is status  <%= status.Name %>
+                    Account <%= status.account %>
                   </li>
                   <li>
-                    here  is account <%= member.account %>
+                    Password <%= status.password %>
+                  </li>
+                  <li>
+                  Phone <%= status.Phone %>
                   </li>
                </div>
            </div>

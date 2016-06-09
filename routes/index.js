@@ -38,13 +38,7 @@ router.get('/', function(req, res, next) {
     }
   });
 
-  /*res.render('index',
-  {
-    member : req.session.member || null,
-    result : null,
-    target :null
 
-  });*/
 });
 
 router.post('/', function(req, res, next) {
@@ -52,8 +46,7 @@ router.post('/', function(req, res, next) {
     var words = req.body.search;
 
     Case.search(words, function(err,result){
-      console.log('words');
-      console.log(result);
+      
       if(err)
       {
         next(err);

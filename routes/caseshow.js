@@ -28,17 +28,13 @@ router.get('/:CID', function(req, res) {
 
   Case.get(req.params.CID,function(err,cased){
 
-    console.log('it is');
-    console.log(cased);
     if(err) {
       res.status = err.code;
       res.json(err);
     }
 
     else{
-      console.log(cased);
-      //console.log(cased[0].CID);
-      console.log(cased.CName);
+
       res.render('Acase',{
         member : req.session.member || null, //EVEY RENDER WILL NEED member or won't show
         cased: cased
@@ -46,6 +42,30 @@ router.get('/:CID', function(req, res) {
 
     }
   });
+
+});
+
+router.post('/',function(req,res){
+
+  console.log('enter');
+  console.log(req.body.d);
+
+  Case.dele(req.body.d, function(err){
+
+      if(err)
+      {
+        res.status = err.code;
+        res.json(err);
+      }
+      else{
+        res.redirect('/');
+      }
+
+  });
+
+
+
+
 
 });
 
