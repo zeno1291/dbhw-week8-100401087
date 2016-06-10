@@ -12,7 +12,10 @@
            </div>
        </div>
    </header>
-
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+   <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
    <!-- Post Content -->
 
        <div class="container">
@@ -30,7 +33,29 @@
                </div>
            </div>
        </div>
+       <div data-role="main" class="ui-content">
+           <div data-role="collapsible">
+             <h1>Password Change</h1>
 
 
+
+       <form name="sentMessage" action="/AStatus" method="POST" id="contactForm" novalidate>
+
+       <fieldset>
+
+           <p>Password: <input title="Password" type="password"  name="pwd1" onchange="
+     this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+     if(this.checkValidity()) form.pwd2.pattern = this.value;
+     "></p>
+     <p>Confirm Password: <input title=" enter the same Password as above" type="password"  name="pwd2" onchange="
+     this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+     "></p>
+
+
+           <p><button type="submit" name="change" value="<%=status.id%>" class="pure-button pure-button-primary">Confirm</button></p>
+       </fieldset>
+
+           </form>
+</div>
+         </div>
    <hr>
-<% include ./footer %>

@@ -31,6 +31,7 @@ router.get('/members/:memberId', function(req, res) {
 
 router.post('/', function(req, res, next) {
 
+  console.log(req.body.account);
   var newMember = new Member({
     account : req.body.account,
     password : req.body.password
@@ -41,8 +42,9 @@ router.post('/', function(req, res, next) {
       next(err);
     } else {
       //再重新導向之前，我們要讓使用者登入，因此我們需要使用到session
-      if(newMember.name!='')
+      if(member2!=undefined)
       {
+
 
       req.session.member = member2;
       global.nexist = null;

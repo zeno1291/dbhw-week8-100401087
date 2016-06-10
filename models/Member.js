@@ -82,6 +82,28 @@ db.select()
   }
   );
 }
+
+Member.upday = function (ID1,newwords,cb) {
+
+  if(ID1) {
+
+    db('member')
+    .update({
+      password: newwords
+    })
+    .where({
+      ID : ID1
+    })
+    .then(function() {
+        cb(null);
+      }.bind(this))
+      .catch(function(err) {
+        console.log(err);
+        cb(null, new GeneralErrors.Database());
+      })
+  }
+
+};
   //save的概念是當物件不存在時新增，存在時對DB做更新
 
 //  cb(null, member1);
@@ -118,18 +140,18 @@ Member.prototype.check = function (cb) { //with check
 
   //if (this.account && this.password) { //find acc,password
 
+
     db("member")
       .where({
         account : this.account,
         password : this.password //with ,
       }).map(function(row) {
-
+      
           this.name = row.name;
-          //console.log('row'+row.name);
-          //console.log('this'+this.name);
           return row;
       })
       .then(function(result) {
+
         console.log(result);
       //  console.log('tance'+typeof result);
         //if(result!=null)
