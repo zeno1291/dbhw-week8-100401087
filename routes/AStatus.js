@@ -19,6 +19,7 @@ Status.find1(req.session.member.id,function(err,status){
       console.log(err);
       next();
     } else {
+      console.log(req.session.member);
       res.render('AStatus', {
         member : req.session.member || null,
         status : status
@@ -35,7 +36,14 @@ router.post('/', function(req, res) {
     console.log(req.body.change);
     console.log(req.body.pwd2);
 
-  Member.upday(req.body.change,req.body.pwd2,function(err){
+     if(!req.body.pwd2)
+    {
+      console.log('hg');
+        res.redirect('/AStatus');
+    }
+
+    else{
+    Member.upday(req.body.change,req.body.pwd2,function(err){
 
       if(err){
         console.log(err);
@@ -46,8 +54,8 @@ router.post('/', function(req, res) {
       }
 
 
-  })
+  })}
 
-  });
+});
 
 module.exports = router;

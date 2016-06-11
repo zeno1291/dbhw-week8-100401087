@@ -59,9 +59,11 @@
                 <li>
                     <a href="/">Home</a>
                 </li>
-
+                
                 <% if(member) {%>
+
                   <% if(nexist){%>
+                    <h1>nexist</h1>
                     <%}else{%>
                   <li>
                       <a href="/">Welcome, <%= member.name %></a>
