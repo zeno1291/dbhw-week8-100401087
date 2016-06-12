@@ -1,0 +1,83 @@
+<% include ./header %>
+
+<header class="intro-header" style="background-image: url('/images/post-bg.jpg')">
+       <div class="container">
+           <div class="row">
+               <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                   <div class="post-heading">
+                       <h1>Show CaseStatus</h1>
+
+                   </div>
+               </div>
+           </div>
+       </div>
+   </header>
+
+   <!-- Post Content -->
+
+       <div class="container">
+           <div class="row">
+               <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                 <%if(global.member){%>
+                 <%if(result){%>
+                   <%result.forEach(function(re){%>
+                     <% if(re.relist.statu == 0){%>
+                   <div class="post-preview">
+
+                     <h2 class="post-title">
+                         Case Name:<%= re.relist.CName %>
+                     </h2>
+                     <h4>
+                      Case HR:<%= re.relist.HR %>
+                     </h4>
+                     <h4>
+                      Student Name:<%= re.relist.SID %>
+                     </h4>
+                     <h4>
+                      Student Name:<%= re.relist.Name %>
+                     </h4>
+                     <h4>
+                       Qualify?: NO
+                     </h4>
+            <form name="sentMessage" action="/StudentCase" method="POST" id="contactForm" novalidate>
+          <div class="row">
+          <div class="form-group col-xs-12">
+            <input type ="hidden" name ="q1" value ="<%= re.relist.CID%>" >
+        <button type="submit" class="btn btn-default" name="q2" value ="<%= re.relist.SID%>">Qualify</button>
+                  </div>
+                </form>
+                 <%}%>
+                  <% }); %>
+
+                   <li>Responsible another desegin,cheeer up</li>
+
+                      <%result.forEach(function(re){%>
+
+                     <%if(re.relist.statu == 1){%>
+
+                       <h2 class="post-title">
+                           Case Name:<%= re.relist.CName %>
+                       </h2>
+                       <h4>
+                        Case HR:<%= re.relist.HR %>
+                       </h4>
+                       <h4>
+                        Student Name:<%= re.relist.SID %>
+                       </h4>
+                       <h4>
+                        Student Name:<%= re.relist.Name %>
+                       </h4>
+                       <h4>
+                         Qualify?: Yes
+                       </h4>
+
+                       <%}%>
+             <%  }); %>
+               <%}}%>
+               </div>
+           </div>
+       </div>
+
+
+   <hr>
+<% include ./footer %>

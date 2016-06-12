@@ -22,7 +22,9 @@
                  <%if(schedulelist){%>
                    <%schedulelist.forEach(function(schedule){%>
                    <div class="post-preview">
-
+                     <li>
+                       SID:<%= schedule.SID %>
+                     </li>
                      <li>
                        Mon9~12:<%= schedule.Mon_9_12 %>
                      </li>

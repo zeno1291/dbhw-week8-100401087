@@ -29,9 +29,10 @@ Member.get = function(memberId, cb) {
     })
     .then(function(memberList) {
       if(memberList.length) {
+
         cb(null, memberList[0]);
       } else {
-        //這邊要產生一個NotFound err給前端，因為error很常用到，我們會獨立出去一個檔案
+//這邊要產生一個NotFound err給前端，因為error很常用到，我們會獨立出去一個檔案
         cb(new GeneralErrors.NotFound());
       }
     })
@@ -146,7 +147,7 @@ Member.prototype.check = function (cb) { //with check
         account : this.account,
         password : this.password //with ,
       }).map(function(row) {
-      
+
           this.name = row.name;
           return row;
       })

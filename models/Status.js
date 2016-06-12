@@ -10,18 +10,11 @@ var Status = function(options) {
   this.Sex = options.Sex;
   this.Phone = options.Phone;
   this.Email = options.Email;
+  this.myhr = options.myhr;
   this.ID = options.ID; //account
 
 }; // many status
 
-var Member = function(options) {
-
-  this.id = options.id;
-  this.name = options.name;
-  this.password = options.password;
-  this.account = options.account;
-
-};
 
 Status.getAll = function(cb) {
 
@@ -36,6 +29,7 @@ Status.getAll = function(cb) {
         Sex : row.Sex,
         Phone :row.Phone,
         Email : row.Email,
+        myhr: row.myhr,
         ID : row.ID
       });
     })
@@ -49,6 +43,7 @@ Status.getAll = function(cb) {
 
 
 Status.get = function(statusId, cb) {  //get file and output
+
   db.select()
     .from('MemberStatus')
     .where({
@@ -115,6 +110,7 @@ Status.prototype.record = function (cb) {
     Sex : this.Sex,
     Phone :this.Phone,
     Email : this.Email,
+    myhr: this.myhr,
     ID : this.ID})
     .then(function(result) {
         //this.id = result[0]
@@ -148,6 +144,44 @@ Status.prototype.upday = function (cb) {
         console.log(err);
         cb(null, new GeneralErrors.Database());
       })
+  }
+
+};
+
+Status.hrupdate = function (SID,hr,cb) {
+
+  if(SID) {
+
+    db.select()
+      .from('MemberStatus')
+      .where({
+        SID : SID
+      })
+      .map(function(row) {
+        return new Status(row);
+      }).then(function(result) {
+        
+        var hr1 =result[0].myhr+hr;
+
+        db('MemberStatus')
+        .update({
+          myhr : hr1
+        })
+        .where({
+          SID : SID
+        })
+        .then(function() {
+            cb(null);
+          }.bind(this))
+          .catch(function(err) {
+            console.log(err);
+            cb(null, new GeneralErrors.Database());
+          })
+        }.bind(this));
+
+
+
+
   }
 
 };

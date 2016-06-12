@@ -22,6 +22,8 @@ var schedule_show = require('./routes/schedule_show');
 var newcase =require('./routes/newcase');
 var showcase =require('./routes/caseshow');
 var match =require('./routes/match');
+var getcase =require('./routes/getcase');
+var showstcase = require('./routes/ShowStudentCase')
 
 var app = express();
 
@@ -55,6 +57,8 @@ app.use('/schedule_show', schedule_show);
 app.use('/newcase', newcase);
 app.use('/caseshow', showcase);
 app.use('/match', match);
+app.use('/getcase', getcase);
+app.use('/StudentCase',showstcase);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

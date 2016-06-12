@@ -12,7 +12,8 @@ router.get('/', function(req, res, next) {
     } else {
       //這邊的做法是使用async each這樣的方式幫我們從caseist中一筆筆去找到member，然後新增一個key叫member在acase物件中
       async.each(caseist, function(acase, cb) {
-        Member.get(acase.CID, function(err) {
+
+        Case.get(acase.CID, function(err) {
           if(err) {
             cb(err);
           } else {
@@ -46,7 +47,7 @@ router.post('/', function(req, res, next) {
     var words = req.body.search;
 
     Case.search(words, function(err,result){
-      
+
       if(err)
       {
         next(err);

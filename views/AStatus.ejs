@@ -5,7 +5,7 @@
            <div class="row">
                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                    <div class="post-heading">
-                       <h1>ACCOUNT</h1>
+                       <h1>ACCOUNT and Case</h1>
 
                    </div>
                </div>
@@ -26,37 +26,75 @@
                  <li>
                    Password <%= status.password %>
                  </li>
-                 <li>
-                 Phone <%= status.Phone %>
+                 <div data-role="main" class="ui-content">
+                     <div data-role="collapsible">
+                       <h1>Password Change</h1>
+
+
+
+                 <form name="sentMessage" action="/AStatus" method="POST" id="contactForm" novalidate>
+
+                 <fieldset>
+
+                     <p>Password: <input title="Password" type="password"  name="pwd1" onchange="
+               this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+               if(this.checkValidity()) form.pwd2.pattern = this.value;
+               "></p>
+               <p>Confirm Password: <input title=" enter the same Password as above" type="password"  name="pwd2" onchange="
+               this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+               "></p>
+
+
+                     <p><button type="submit" name="change" value="<%=status.id%>" class="pure-button pure-button-primary">Confirm</button></p>
+                 </fieldset>
+
+                     </form>
+          </div>
+                   </div>
+
+               <HR><li>
+                 Case Status
+               </li>
+             </HR>
+                 <%if(casename){%>
+                   <HR>
+                   <%casename.forEach(function(Acase){%>
+                      <%if(Acase.statu==0){%>
+                        <li>
+                          Case Name <%= Acase.CName %>
+                        </li>
+                        <li>
+                          HR <%= Acase.HR %>
+                        </li>
+                        <li>
+                          Status: Waiting
+                        </li>
+
+                        <%}%>
+                         <%});%>
+                      </HR>
+                      <HR>
+                        <%casename.forEach(function(Acase){%>
+                           <%if(Acase.statu==1){%>
+                             <li>
+                               Case Name <%= Acase.CName %>
+                             </li>
+                             <li>
+                               HR <%= Acase.HR %>
+                             </li>
+                             <li>
+                               Status: Finshed
+                             </li>
+
+                             <%}%>
+                     <%});%>
+                   </HR>
+                   <%}%>
                  </li>
                </div>
            </div>
 
        </div>
-       <div data-role="main" class="ui-content">
-           <div data-role="collapsible">
-             <h1>Password Change</h1>
 
-
-
-       <form name="sentMessage" action="/AStatus" method="POST" id="contactForm" novalidate>
-
-       <fieldset>
-
-           <p>Password: <input title="Password" type="password"  name="pwd1" onchange="
-     this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
-     if(this.checkValidity()) form.pwd2.pattern = this.value;
-     "></p>
-     <p>Confirm Password: <input title=" enter the same Password as above" type="password"  name="pwd2" onchange="
-     this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
-     "></p>
-
-
-           <p><button type="submit" name="change" value="<%=status.id%>" class="pure-button pure-button-primary">Confirm</button></p>
-       </fieldset>
-
-           </form>
-</div>
-         </div>
    <hr>
 <% include ./footer %>

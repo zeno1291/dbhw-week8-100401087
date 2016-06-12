@@ -37,6 +37,7 @@ router.post('/', function(req, res) {
     Sex : req.body.Sex,
     Phone :req.body.Phone,
     Email : req.body.Email,
+    myhr: 0,
     ID: mid
   });
 

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Member = require('../models/Member');
 var Status = require('../models/Status');
+var Qualify = require('../models/Qualify');
 var async = require('async');
 
 router.get('/', function(req, res) {
@@ -19,11 +20,42 @@ Status.find1(req.session.member.id,function(err,status){
       console.log(err);
       next();
     } else {
-      console.log(req.session.member);
-      res.render('AStatus', {
-        member : req.session.member || null,
-        status : status
+
+      Qualify.show(status.SID,function(err,casename){
+        if(err)
+        {
+          console.log(err);
+          next();
+        }
+
+        else{
+            console.log('case'+casename);
+            if(casename ==null || casename ==undefined)
+            {
+              res.render('AStatus', {
+              member : req.session.member || null,
+              status : status,
+              casename : null
+              });
+            }
+
+            else{
+
+
+            console.log('case'+casename);
+            console.log('case'+casename[0]);
+            console.log('caseCC'+casename[0].CID);
+              res.render('AStatus', {
+              member : req.session.member || null,
+              status : status,
+              casename : casename
+              });
+              }
+          }
+
       });
+
+
     }
   });
 

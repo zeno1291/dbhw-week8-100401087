@@ -38,6 +38,7 @@ router.get('/:CID', function(req, res) {
       res.render('Acase',{
         member : req.session.member || null, //EVEY RENDER WILL NEED member or won't show
         cased: cased
+
     });
 
     }

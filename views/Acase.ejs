@@ -19,12 +19,16 @@
        <div class="container">
            <div class="row">
                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                 
                  <h1>Name:<%= cased.CName %></h1>
                   <p>
                     Date:<%= cased.Date_1 %>
                   </p>
                   <p>
                     Time:<%= cased.Time %>
+                  </p>
+                  <p>
+                    HR:<%= cased.HR %>
                   </p>
                   <p>
                     Week:<%= cased.Week %>
@@ -35,6 +39,15 @@
                </div>
            </div>
        </div>
+       <%if(member){%>
+       <form name="sentMessage" action="/getcase" method="POST" id="contactForm" novalidate>
+     <div class="row">
+         <div class="form-group col-xs-12">
+
+             <button type="submit" class="btn btn-default" name="take" value ="<%= cased.CID%>" >GetCase</button>
+         </div>
+           </form>
+           <%}%>
        <%if(global.member){%>
            <form name="sentMessage" action="/caseshow" method="POST" id="contactForm" novalidate>
          <div class="row">
@@ -44,6 +57,7 @@
              </div>
                </form>
             <%}%>
+
 
    </article>
 

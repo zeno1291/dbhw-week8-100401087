@@ -32,13 +32,14 @@ router.post('/',function(req,res){
       Date_1: req.body.Date_1,
       Time:req.body.Time,
       Week:req.body.Week,
+      HR:req.body.hr,
       Description:req.body.Description
 
     }); //({}) ==options
 
 
     newCase.record(function(err){
-  
+
         if(err)
         {
           res.status = err.code;

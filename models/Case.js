@@ -11,6 +11,7 @@ var Case = function(options){
   this.Date_1= options.Date_1;
   this.Time= options.Time;
   this.Week= options.Week;
+  this.HR = options.HR;
   this.Description= options.Description;
 
 
@@ -44,13 +45,15 @@ Case.get = function(transferCID,cb){
 };
 
 Case.getAll = function(cb){
-
+  console.log('ss')
     db().select()
     .from('Case')
     .map(function(row){
+      console.log(row)
       return new Case(row); //row.CID.,row.
     })
     .then(function(Caselist){
+      console.log(Caselist);
       cb(null,Caselist);
     })
     .catch(function(err){
@@ -197,6 +200,7 @@ Case.prototype.record  = function(cb){ //def use =func
       Date_1 : this.Date_1,
       Time:this.Time,
       Week:this.Week,
+      HR : this.HR,
       Description:this.Description
     })
     .then(function(result){
